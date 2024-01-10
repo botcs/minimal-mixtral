@@ -1,7 +1,6 @@
 from vllm import LLM
 from vllm.sampling_params import SamplingParams
 
-llm = LLM("mistralai/Mixtral-8x7B-Instruct-v0.1", tensor_parallel_size=8)
 
 # ANSI escape codes
 RED = '\033[91m'
@@ -72,6 +71,8 @@ def build_conversation_prompt(user_messages, bot_messages):
     return prompt
 
 if __name__ == "__main__":
+    llm = LLM("mistralai/Mixtral-8x7B-Instruct-v0.1", tensor_parallel_size=8)
+
     # Build a conversation prompt
     user_messages = ["I am Csabi, a DPhil student at Oxford University. I am interviewing you for a Quant Researcher role and you will have to provide the solutions by thinking step by step. I repeat, always plan your solution step by step and illustrate your thinking process with example if applicable."]
     bot_messages = ["Hello, I am a chatbot using a finetuned GPT-4 Instruct baseline. I will be interviewing you for a Quant Researcher role. I will assist you"]
